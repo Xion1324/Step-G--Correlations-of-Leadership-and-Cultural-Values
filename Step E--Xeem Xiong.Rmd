@@ -1,0 +1,99 @@
+---
+title: "Step E"
+author: "Xeem Xiong"
+date: "4/12/2022"
+output: html_document
+---
+Take out Data
+```{r}
+library(ggplot2)
+cultureDat <-read.csv("C:/Users/Possi/Documents/R/Final Project/Final Project Data/GLOBE-Phase-2-Aggregated-Societal-Culture-Data.csv", header= TRUE, sep=",")
+
+leadershipDat <-read.csv("C:/Users/Possi/Documents/R/Final Project/Final Project Data/GLOBE-Phase-2-Aggregated-Leadership-Data.csv", header= TRUE, sep=",")
+```
+
+Data Subsets/Columns
+```{r}
+#Cultural Value Dimensions
+perfOrient <-cultureDat$Performance.Orientation.Societal.Values
+
+futOrient <-cultureDat$Future.Orientation.Societal.Values
+
+#Leadership Dimensions
+charismaticLeader <-leadershipDat$Charismatic.Value.based.Global.Leadership.Dimension
+
+teamOrientLeader <-leadershipDat$Team.Oriented.Global.Leadership.Dimension
+
+selfProtectiveLeader<- leadershipDat$Self.Protective.Global.Leadership.Dimension
+
+participativeLeader<-leadershipDat$Participative.Global.Leadership.Dimension
+
+humaneOrientLeader<- leadershipDat$Humane.Oriented.Global.Leadership.Dimension
+
+autonomousLeader<- leadershipDat$Autonomous.Global.Leadership.Dimension
+```
+
+Correlations
+```{r}
+#Performance Orientation with the Leadership Dimensions
+cor.test(perfOrient, charismaticLeader)
+
+cor.test(perfOrient, teamOrientLeader)
+
+cor.test(perfOrient, selfProtectiveLeader)
+
+cor.test(perfOrient, participativeLeader)
+
+cor.test(perfOrient, humaneOrientLeader)
+
+cor.test(perfOrient, autonomousLeader)
+
+#Future Orientation with the Leadership Dimensions
+cor.test(futOrient, charismaticLeader)
+
+cor.test(futOrient, teamOrientLeader)
+
+cor.test(futOrient, selfProtectiveLeader)
+
+cor.test(futOrient, participativeLeader)
+
+cor.test(futOrient, humaneOrientLeader)
+
+cor.test(futOrient, autonomousLeader)
+```
+
+Visuals
+```{r}
+#Performance Orientation with Leadership Dimensions
+ggplot(,aes(perfOrient,charismaticLeader))+ geom_point() + geom_smooth(method = "lm") + xlab(label = "Performance Orientation") +ylab(label = "Charismatic Leadership Dimension")
+
+ggplot(,aes(perfOrient,teamOrientLeader))+ geom_point() + geom_smooth(method = "lm") + xlab(label = "Performance Orientation") +ylab(label = "Team Oriented Leadership Dimension")
+
+ggplot(,aes(perfOrient,selfProtectiveLeader))+ geom_point() + geom_smooth(method = "lm") + xlab(label = "Performance Orientation") +ylab(label = "Self-Protective Leadership Dimension")
+
+ggplot(,aes(perfOrient,participativeLeader))+ geom_point() + geom_smooth(method = "lm") + xlab(label = "Performance Orientation") +ylab(label = "Participative Leadership Dimension")
+
+ggplot(,aes(perfOrient,humaneOrientLeader))+ geom_point() + geom_smooth(method = "lm") + xlab(label = "Performance Orientation") +ylab(label = "Humane-Oriented Leadership Dimension")
+
+ggplot(,aes(perfOrient,autonomousLeader))+ geom_point() + geom_smooth(method = "lm") + xlab(label = "Performance Orientation") +ylab(label = "Autonomous Leadership Dimension")
+
+#Future Orientation with Leadership Dimensions
+ggplot(,aes(futOrient,charismaticLeader))+ geom_point() + geom_smooth(method = "lm") + xlab(label = "Future Orientation") +ylab(label = "Charismatic Leadership Dimension")
+
+ggplot(,aes(futOrient,teamOrientLeader))+ geom_point() + geom_smooth(method = "lm") + xlab(label = "Future Orientation") +ylab(label = "Team Oriented Leadership Dimension")
+
+ggplot(,aes(futOrient,selfProtectiveLeader))+ geom_point() + geom_smooth(method = "lm") + xlab(label = "Future Orientation") +ylab(label = "Self-Protective Leadership Dimension")
+
+ggplot(,aes(futOrient,participativeLeader))+ geom_point() + geom_smooth(method = "lm") + xlab(label = "Future Orientation") +ylab(label = "Participative Leadership Dimension")
+
+ggplot(,aes(futOrient,humaneOrientLeader))+ geom_point() + geom_smooth(method = "lm") + xlab(label = "Future Orientation") +ylab(label = "Humane-Oriented Leadership Dimension")
+
+ggplot(,aes(futOrient,autonomousLeader))+ geom_point() + geom_smooth(method = "lm") + xlab(label = "Future Orientation") +ylab(label = "Autonomous Leadership Dimension")
+```
+
+Exploration-- Performance Orientation and Future Orientation Correlation
+```{r}
+cor.test(perfOrient, futOrient)
+
+ggplot(,aes(perfOrient, futOrient))+ geom_point() +geom_smooth(method="lm") +ylab(label="Future Orientation")+ xlab(label="Performance Orientation")
+```
